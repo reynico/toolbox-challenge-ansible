@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
 	echo "Installing required packages"
-    sudo yum update -y
+	sudo yum update -y
 	sudo yum install -y epel-release ansible
 	easy_install pip
 	ansible-playbook -l localhost ansible/playbook.yml
