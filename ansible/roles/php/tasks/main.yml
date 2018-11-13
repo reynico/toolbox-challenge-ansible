@@ -1,0 +1,20 @@
+---
+  - name: install php 
+    package:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - php
+      - php-mysql
+      - php-fpm
+
+  - name: configure php
+    template: 
+      src: "php/www.conf.j2" 
+      dest: "/etc/php-fpm.d/www.conf"
+      owner: "root"
+      group: "root"
+      mode: 0600
+    notify:
+      - restart php

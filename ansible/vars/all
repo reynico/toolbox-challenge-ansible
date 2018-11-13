@@ -1,0 +1,7 @@
+mysql_root_password: test123
+ansible_fqdn: localhost
+php_listen_address: /var/run/php-fpm/php-fpm.sock
+php_listen_owner: nginx
+php_listen_group: nginx
+php_runas_user: nginx
+php_runas_group: nginx

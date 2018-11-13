@@ -1,0 +1,40 @@
+---
+  - name: Install and configure webserver
+    hosts: localhost
+    connection: local
+    become: yes
+    tags:
+      - webserver
+    roles:
+      - nginx
+
+  - name: Install and configure database server
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files:
+      - vars/all
+    tags:
+      - database
+    roles:
+      - mariadb
+
+  - name: Install and configure web interpreter
+    hosts: localhost
+    connection: local
+    become: yes
+    vars_files:
+      - vars/all
+    tags:
+      - webserver
+    roles:
+      - php
+
+  - name: Set PHP test file # This shouldn't be left here, security risks (-:
+    hosts: localhost
+    connection: local
+    become: yes
+    tags:
+      - testing
+    roles:
+      - test_project

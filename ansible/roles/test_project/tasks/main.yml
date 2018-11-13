@@ -1,0 +1,8 @@
+---
+  - name: set phpinfo(); file
+    template: 
+      src: "php/phpinfo.php.j2" 
+      dest: "/usr/share/nginx/html/index.php"
+      owner: "nginx"
+      group: "nginx"
+      mode: 0600
